@@ -1,0 +1,20 @@
+# Dependencies
+**/node_modules
+
+# Build
+**/dist
+
+# Env
+.env
+.env.*
+
+# Logs
+*.log
+
+# VS Code
+.vscode
+
+# OS files
+.DS_Store
+
+prescripto_assets
