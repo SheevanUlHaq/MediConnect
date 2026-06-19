@@ -1,4 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
+
+*{
+  font-family: Outfit;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+::-webkit-scrollbar{
+  @apply hidden;
+}
 
 @theme {
   --color-primary: #5f6FFF;
@@ -10,6 +23,6 @@
     @apply block;
 }
 
-::-webkit-scrollbar{
-  @apply hidden;
+button{
+  @apply cursor-pointer
 }

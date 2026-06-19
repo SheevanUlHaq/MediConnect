@@ -3,6 +3,7 @@ import "./index.css";
 import { Route, Routes } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import Doctors from "./pages/Doctors";
@@ -17,6 +18,7 @@ const App = () => {
   return (
     <div className="mx-4 sm:mx-[10%]">
       <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/doctors" element={<Doctors />}></Route>
@@ -28,6 +30,8 @@ const App = () => {
         <Route path="/my-appointments" element={<MyAppointments />}></Route>
         <Route path="/appointment/:docId" element={<Appointment />}></Route>
       </Routes>
+
+      <Footer />
     </div>
   );
 };
