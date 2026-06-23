@@ -1,7 +1,10 @@
 import React from "react";
 import { assets } from "../assets/assets";
+import { Mail, Phone } from "lucide-react";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <div className="md:mx-10">
       <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm">
@@ -23,18 +26,50 @@ const Footer = () => {
         <div>
           <p className="text-lg font-medium mb-5">COMPANY</p>
           <ul className="flex flex-col text-gray-600 gap-2">
-            <li>Home</li>
-            <li>About us</li>
-            <li>Contact us</li>
-            <li>Privacy policy</li>
+            <li>
+              <NavLink to="/" className="hover:text-primary transition">
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/about" className="hover:text-primary transition">
+                About Us
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact" className="hover:text-primary transition">
+                Contact Us
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="hover:text-primary transition">
+                Privacy Policy
+              </NavLink>
+            </li>
           </ul>
         </div>
         {/* Right Section */}
         <div>
           <p className="text-lg font-medium mb-5">GET IN TOUCH</p>
           <ul className="flex flex-col text-gray-600 gap-2">
-            <li>+91-9876543210</li>
-            <li>support@mediconnect.com</li>
+            <div className="flex items-center gap-3">
+              <Phone size={18} className="text-primary" />
+              <a
+                href="tel:+919876543210"
+                className="hover:text-primary transition"
+              >
+                +91-9876543210
+              </a>
+            </div>
+            <div className="flex items-center gap-3">
+              <Mail size={18} className="text-primary" />
+              <a
+                href="mailto:sheevan12345@gmail.com"
+                className="hover:text-primary transition"
+              >
+                support@mediconnect.com
+              </a>
+            </div>
           </ul>
         </div>
       </div>

@@ -5,6 +5,7 @@ import profile_pic from "./profile_pic.png";
 import contact_image from "./contact_image.png";
 import about_image from "./about_image.png";
 import logo from "./logo.svg";
+import transparentlogo from "./transparentLogo.png";
 import mediConnectLogo from "./mediConnectLogo.png";
 import mediConnectFavicon from "./mediConnectFavicon.png";
 import dropdown_icon from "./dropdown_icon.svg";
@@ -44,6 +45,7 @@ export const assets = {
   header_img,
   group_profiles,
   logo,
+  transparentlogo,
   mediConnectLogo,
   mediConnectFavicon,
   chats_icon,

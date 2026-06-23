@@ -13,12 +13,14 @@ import Contact from "./pages/Contact";
 import MyProfile from "./pages/MyProfile";
 import MyAppointments from "./pages/MyAppointments";
 import Appointment from "./pages/Appointment";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
     <div className="mx-4 sm:mx-[10%]">
       <Navbar />
 
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/doctors" element={<Doctors />}></Route>

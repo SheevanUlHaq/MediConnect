@@ -23,6 +23,29 @@ html {
     @apply block;
 }
 
+@media (max-width: 740px) {
+  .active hr {
+    display: block;
+  }
+
+  .mobile-link-active {
+    color: #5f6fff;
+    background: rgba(95, 111, 255, 0.08);
+  }
+
+  .mobile-link {
+    transition: all 0.2s ease;
+  }
+
+  .mobile-link:active {
+    transform: scale(0.98);
+  }
+}
+
 button{
   @apply cursor-pointer
+}
+
+.grid-cols-auto{
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
 }

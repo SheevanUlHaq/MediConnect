@@ -1,20 +1,42 @@
 # Dependencies
-**/node_modules
+node_modules/
+**/node_modules/
 
-# Build
-**/dist
+# Build files
+dist/
+build/
+**/dist/
+**/build/
 
-# Env
+# Environment variables
 .env
 .env.*
+**/.env
+**/.env.*
 
 # Logs
 *.log
+logs/
 
 # VS Code
-.vscode
+.vscode/
 
-# OS files
+# OS Files
 .DS_Store
+Thumbs.db
 
-prescripto_assets
+# Vite
+vite.config.timestamp-*
+
+# Coverage
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Prescripto assets
+prescripto_assets/
+
+# Optional
+package-lock.json
