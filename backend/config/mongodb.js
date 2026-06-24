@@ -1,0 +1,15 @@
+import mongoose from "mongoose";
+
+const connectDB = async () => {
+  mongoose.connection.on("connected", () => {
+    console.log("MongoDB Connected...");
+  });
+
+  mongoose.connection.on("error", (err) => {
+    console.log("MongoDB Error:", err);
+  });
+
+  await mongoose.connect(`${process.env.MONGODB_URI}/mediconnect`);
+};
+
+export default connectDB;
