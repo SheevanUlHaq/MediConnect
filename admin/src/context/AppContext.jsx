@@ -9,3 +9,5 @@ const AppContextProvider = (props) => {
     <AppContext.Provider value={value}>{props.children}</AppContext.Provider>
   );
 };
+
+export default AppContextProvider;

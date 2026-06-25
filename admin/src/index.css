@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+::-webkit-scrollbar{
+    @apply hidden;
+}
+
+html{
+    @apply scroll-smooth;
+}
+
+@theme{
+    --color-primary: #5F6FFF;
+}
+
+.input{
+  @apply w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-primary transition;
+}

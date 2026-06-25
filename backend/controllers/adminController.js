@@ -15,6 +15,11 @@ const login = async (req, res) => {
     ) {
       const token = jwt.sign(email + password, process.env.JWT_SECRET);
       res.json({ success: true, token });
+    } else {
+      return res.json({
+        success: false,
+        message: "Invalid Credentials",
+      });
     }
   } catch (error) {
     console.log(error);
@@ -54,7 +59,7 @@ const addDoctor = async (req, res) => {
       !fees ||
       !address
     ) {
-      return res.status(400).json({
+      return res.json({
         success: false,
         message: "Data missing",
       });
@@ -62,7 +67,7 @@ const addDoctor = async (req, res) => {
 
     // Validating email
     if (!validator.isEmail(email)) {
-      return res.status(400).json({
+      return res.json({
         success: false,
         message: "Please enter a valid email",
       });
@@ -106,7 +111,7 @@ const addDoctor = async (req, res) => {
     res.json({ success: true, message: "Doctor Added successfully" });
   } catch (error) {
     console.log("Doctor not added:", error);
-    return res.status(500).json({
+    return res.json({
       success: false,
       message: error.message,
     });

@@ -1,9 +1,16 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const AdminContext = createContext();
 
 const AdminContextProvider = (props) => {
-  const value = {};
+  const [aToken, setAToken] = useState(
+    localStorage.getItem("aToken") ? localStorage.getItem("aToken") : "",
+  );
+
+  const value = {
+    aToken,
+    setAToken,
+  };
 
   return (
     <AdminContext.Provider value={value}>
@@ -11,3 +18,5 @@ const AdminContextProvider = (props) => {
     </AdminContext.Provider>
   );
 };
+
+export default AdminContextProvider;
