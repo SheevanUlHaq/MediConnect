@@ -99,7 +99,7 @@ const addDoctor = async (req, res) => {
       image: imageUrl,
       speciality,
       degree,
-      experience: Number(experience),
+      experience,
       about,
       fees: Number(fees),
       address: JSON.parse(address),
@@ -118,4 +118,16 @@ const addDoctor = async (req, res) => {
   }
 };
 
-export { addDoctor, login };
+// Api for displaying all doctors
+const allDoctors = async (req, res) => {
+  try {
+    // It will get all doctor's data but it will not fetch password
+    const doctors = await doctorModel.find({}).select("-password");
+    res.json({ success: true, doctors });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: "false", message: error.message });
+  }
+};
+
+export { addDoctor, login, allDoctors };

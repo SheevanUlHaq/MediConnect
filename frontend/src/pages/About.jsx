@@ -52,7 +52,7 @@ const About = () => {
           <img
             src={assets.about_image}
             alt="About MediConnect"
-            className="rounded-2xl shadow-lg"
+            className="rounded-2xl shadow-lg lg:h-110 object-cover"
           />
         </div>
 

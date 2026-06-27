@@ -14,12 +14,13 @@ import MyProfile from "./pages/MyProfile";
 import MyAppointments from "./pages/MyAppointments";
 import Appointment from "./pages/Appointment";
 import ScrollToTop from "./components/ScrollToTop";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
     <div className="mx-4 sm:mx-[10%]">
+      <ToastContainer />
       <Navbar />
-
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />}></Route>
@@ -32,7 +33,6 @@ const App = () => {
         <Route path="/my-appointments" element={<MyAppointments />}></Route>
         <Route path="/appointment/:docId" element={<Appointment />}></Route>
       </Routes>
-
       <Footer />
     </div>
   );

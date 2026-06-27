@@ -9,31 +9,35 @@ import { Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Admin/Dashboard";
 import AddDoctor from "./pages/Admin/AddDoctor";
 import AllAppointments from "./pages/Admin/AllAppointments";
-import DoctorsList from "./pages/Admin/DoctorsList";
+import AllDoctors from "./pages/Admin/AllDoctors";
 
 const App = () => {
   const { aToken } = useContext(AdminContext);
 
-  return aToken ? (
-    <div className="bg-blue-50/50">
+  return (
+    <>
       <ToastContainer />
-      <Navbar />
-      <div className="flex items-start">
-        <Sidebar />
-        <Routes>
-          <Route path="/" element={<></>} />
-          <Route path="/admin-dashboard" element={<Dashboard />} />
-          <Route path="/add-doctor" element={<AddDoctor />} />
-          <Route path="/all-appointments" element={<AllAppointments />} />
-          <Route path="/doctors-list" element={<DoctorsList />} />
-        </Routes>
-      </div>
-    </div>
-  ) : (
-    <div>
-      <Login />
-      <ToastContainer />
-    </div>
+
+      {aToken ? (
+        <div className="bg-blue-50/50">
+          <Navbar />
+          <div className="flex items-start">
+            <Sidebar />
+            <Routes>
+              <Route path="/" element={<></>} />
+              <Route path="/admin-dashboard" element={<Dashboard />} />
+              <Route path="/add-doctor" element={<AddDoctor />} />
+              <Route path="/all-appointments" element={<AllAppointments />} />
+              <Route path="/all-doctors" element={<AllDoctors />} />
+            </Routes>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <Login />
+        </div>
+      )}
+    </>
   );
 };
 

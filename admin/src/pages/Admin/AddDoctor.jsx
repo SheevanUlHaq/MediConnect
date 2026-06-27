@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 import { assets } from "../../assets/assets";
+import { AdminContext } from "../../context/AdminContext";
 
 const AddDoctor = () => {
+  const { aToken } = useContext(AdminContext);
+
   const [docImg, setDocImg] = useState(false);
   const [docData, setDocData] = useState({
     name: "",
@@ -12,14 +16,68 @@ const AddDoctor = () => {
     experience: "1 Year",
     fees: "",
     speciality: "General Physician",
-    education: "",
+    degree: "",
     address1: "",
     address2: "",
     about: "",
   });
-  console.log(docData);
 
-  const onSubmitHandler = async () => {};
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
+
+    try {
+      if (!docImg) {
+        toast.error("Image Not Selected");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("image", docImg);
+      formData.append("name", docData.name);
+      formData.append("email", docData.email);
+      formData.append("password", docData.password);
+      formData.append("experience", docData.experience);
+      formData.append("fees", Number(docData.fees));
+      formData.append("speciality", docData.speciality);
+      formData.append("degree", docData.degree);
+      formData.append(
+        "address",
+        JSON.stringify({
+          line1: docData.address1,
+          line2: docData.address2,
+        }),
+      );
+      formData.append("about", docData.about);
+
+      const { data } = await axios.post(
+        import.meta.env.VITE_BACKEND_URL + "/api/admin/add-doctor",
+        formData,
+        { headers: { aToken } },
+      );
+
+      if (data.success) {
+        toast.success(data.message);
+        setDocData({
+          name: "",
+          email: "",
+          password: "",
+          experience: "1 Year",
+          fees: "",
+          speciality: "General Physician",
+          degree: "",
+          address1: "",
+          address2: "",
+          about: "",
+        });
+        setDocImg(false);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
 
   return (
     <form onSubmit={onSubmitHandler} className="m-6 w-full">
@@ -192,18 +250,18 @@ const AddDoctor = () => {
             <div className="flex flex-col gap-2">
               <label
                 className="text-sm font-semibold text-slate-700"
-                htmlFor="education"
+                htmlFor="degree"
               >
-                Education
+                Degree
               </label>
               <input
                 onChange={(e) =>
-                  setDocData({ ...docData, education: e.target.value })
+                  setDocData({ ...docData, degree: e.target.value })
                 }
-                value={docData.education}
+                value={docData.degree}
                 className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 outline-none transition-all"
                 type="text"
-                id="education"
+                id="degree"
                 placeholder="e.g. MBBS, MD"
                 required
               />

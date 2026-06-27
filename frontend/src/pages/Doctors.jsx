@@ -150,7 +150,7 @@ const Doctors = () => {
               className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-2.5 transition-all duration-500"
             >
               <img
-                className="bg-violet-200/30 rounded-t-2xl"
+                className="bg-violet-200/30 rounded-t-2xl w-full object-cover"
                 src={doctor.image}
                 alt=""
               />

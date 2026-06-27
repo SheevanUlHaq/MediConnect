@@ -3,40 +3,88 @@ import { assets } from "../assets/assets";
 
 const Header = () => {
   return (
-    <div className="flex flex-col md:flex-row flex-wrap rounded-lg bg-primary px-6 md:px-10 lg:px-20">
-      {/* ----- Left Side ----- */}
-      <div className="md:w-1/2 flex flex-col items-start justify-center gap-4 py-10 m-auto md:py-[10vw] md:mb-[-30px]">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-semibold leading-tight md:leading-tight lg:leading-tight">
-          Book Appointment
-          <br />
-          With Trusted Doctors
-        </h1>
-        <div className="flex flex-col md:flex-row items-center gap-3 text-white text-sm font-light ">
-          <img className="w-28" src={assets.group_profiles} alt="" />
-          <p>
-            Simply browse through our extensive list of trusted doctors,{" "}
-            <br className="hidden md:block" />
-            schedule your appointment hassle-free.
-          </p>
-        </div>
-        <a
-          href="#speciality"
-          className="flex items-center gap-2 bg-white px-8 py-3 rounded-full text-sm text-gray-600 m-auto md:m-0 hover:scale-105 transition-all duration-300"
-        >
-          Book Appointment{" "}
-          <img className="w-3" src={assets.arrow_icon} alt="" />
-        </a>
-      </div>
+    <section className="relative overflow-hidden rounded-3xl bg-linear-to-r from-[#f8fbff] via-[#f3f7ff] to-[#edf4ff]">
+      {/* Decorative Blur */}
+      <div className="absolute -top-32 -left-20 h-72 w-72 rounded-full bg-blue-200/30 blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-blue-100/50 blur-3xl"></div>
 
-      {/* ----- Right Side ----- */}
-      <div className="md:w-1/2 relative">
-        <img
-          className="w-full absolute bottom-0 h-auto rounded-lg"
-          src={assets.header_img}
-          alt=""
-        />
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
+        <div className="grid lg:grid-cols-2 items-center min-h-135">
+          {/* Left */}
+
+          <div className="z-10">
+            {/* Badge */}
+
+            <div className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-primary text-sm font-medium">
+              <span className="h-2 w-2 rounded-full bg-green-500"></span>
+              Trusted by 5000+ Patients
+            </div>
+
+            {/* Heading */}
+
+            <h1 className="mt-7 text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
+              Book Appointment
+              <br />
+              With <span className="text-primary">Trusted</span>
+              <br />
+              <span className="text-primary">Doctors</span>
+            </h1>
+
+            {/* Description */}
+
+            <p className="mt-7 max-w-lg text-lg leading-8 text-gray-600">
+              Connect with experienced doctors across multiple specialties,
+              schedule appointments instantly and receive quality healthcare
+              from the comfort of your home.
+            </p>
+
+            {/* Patients */}
+
+            <div className="mt-8 flex items-center gap-4">
+              <img
+                src={assets.mediConnect_group_badge}
+                alt=""
+                className="w-32"
+              />
+
+              <div>
+                <p className="font-semibold text-gray-800 text-lg">
+                  100+ Verified Doctors
+                </p>
+
+                <p className="text-gray-500">Book in less than 2 minutes</p>
+              </div>
+            </div>
+
+            {/* Button */}
+
+            <a
+              href="#speciality"
+              className="mt-10 inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 duration-300"
+            >
+              Book Appointment
+              <img src={assets.arrow_icon} alt="" className="w-4 invert" />
+            </a>
+          </div>
+
+          {/* Right */}
+
+          <div className="relative flex justify-center items-end">
+            {/* Background Circle */}
+
+            <div className="absolute bottom-0 h-[420px] w-[420px] rounded-full bg-blue-100"></div>
+
+            {/* Doctors */}
+
+            <img
+              src={assets.mediConnect_group}
+              alt="Doctors"
+              className="relative w-full max-w-[620px] object-contain"
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
