@@ -1,14 +1,57 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+import { AppContext } from "../context/AppContext";
 
 const Login = () => {
+  const { token, setToken, backendUrl } = useContext(AppContext);
+  const navigate = useNavigate();
+
   const [state, setState] = useState("Sign Up");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
+
+    try {
+      if (state === "Sign Up") {
+        const { data } = await axios.post(backendUrl + "/api/user/register", {
+          name,
+          email,
+          password,
+        });
+        if (!data.success) {
+          toast.error(data.message);
+        } else {
+          localStorage.setItem("token", data.token);
+          setToken(data.token);
+        }
+      } else {
+        const { data } = await axios.post(backendUrl + "/api/user/login", {
+          email,
+          password,
+        });
+        if (!data.success) {
+          toast.error(data.message);
+        } else {
+          localStorage.setItem("token", data.token);
+          setToken(data.token);
+        }
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
+
+  useEffect(() => {
+    if (token) {
+      navigate("/");
+    }
+  }, [token]);
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 bg-gray-50">
@@ -78,7 +121,7 @@ const Login = () => {
             />
           </div>
 
-          {state === "Sign In" && (
+          {/* {state === "Sign In" && (
             <div className="flex justify-end">
               <button
                 type="button"
@@ -87,7 +130,7 @@ const Login = () => {
                 Forgot Password?
               </button>
             </div>
-          )}
+          )} */}
 
           <button
             type="submit"

@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { NavLink, useNavigate } from "react-router-dom";
 
+import { AppContext } from "../context/AppContext";
+
 const Navbar = () => {
-  const [token, setToken] = useState(true);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
+  const { token, setToken, userData } = useContext(AppContext);
+
   const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setToken("");
+  };
 
   return (
     <div className="flex items-center justify-between text-sm py-4 mb-5 border-b border-b-gray-500">
@@ -37,15 +45,15 @@ const Navbar = () => {
       </ul>
 
       <div className="flex items-center gap-4 cursor-pointer">
-        {token ? (
+        {token && userData ? (
           <div className="relative">
             <div
               onClick={() => setShowDropdown((prev) => !prev)}
               className="flex items-center gap-2 cursor-pointer"
             >
               <img
-                className="w-8 rounded-full"
-                src={assets.profile_pic}
+                className="w-10 h-10 object-cover rounded-full border-2 border-primary"
+                src={userData.image}
                 alt=""
               />
 
@@ -85,7 +93,7 @@ const Navbar = () => {
 
                   <button
                     onClick={() => {
-                      setToken(false);
+                      logout();
                       setShowDropdown(false);
                     }}
                     className="text-left px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 transition"
